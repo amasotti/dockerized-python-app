@@ -13,9 +13,9 @@ def main():
     soup = BeautifulSoup(response.text, 'html.parser')
     # soup = BeautifulSoup(response.text, 'lxml') # faster
 
-    # print(soup.prettify())
+    print(soup.prettify())
 
-    movietags = soup.select('td.titleColumn')
+    movie_tags = soup.select('td.titleColumn')
     inner_movietags = soup.select('td.titleColumn a')
     ratingtags = soup.select('td.posterColumn span[name=ir]')
 
@@ -24,7 +24,7 @@ def main():
         year = moviesplit[-1]  # last item
         return year
 
-    years = [get_year(tag) for tag in movietags]
+    years = [get_year(tag) for tag in movie_tags]
     actors_list = [tag['title'] for tag in inner_movietags]  # access attribute 'title'
     titles = [tag.text for tag in inner_movietags]
     ratings = [float(tag['data-value']) for tag in ratingtags]  # access attribute 'data-value'
