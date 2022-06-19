@@ -13,7 +13,7 @@ def main():
     soup = BeautifulSoup(response.text, 'html.parser')
     # soup = BeautifulSoup(response.text, 'lxml') # faster
 
-    print(soup.prettify())
+    #print(soup.prettify())
 
     movie_tags = soup.select('td.titleColumn')
     inner_movietags = soup.select('td.titleColumn a')

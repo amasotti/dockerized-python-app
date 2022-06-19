@@ -1,15 +1,9 @@
 FROM python:3.10
+LABEL version="0.1.0"
 
 WORKDIR /app
+COPY . .
 
-ENV POETRY_VERSION=1.1.13
-RUN pip install "poetry==$POETRY_VERSION"
-ENV PATH="${PATH}:/root/.poetry/bin"
-
-# Add source file
-COPY . /app
-
-RUN /app
-RUN poetry install && poetry check
-
-CMD ["python", "./main.py"]
+RUN pip install requests bs4
+RUN pwd && ls -Alh
+CMD ["python", "dockerized_python_app/main.py"]
