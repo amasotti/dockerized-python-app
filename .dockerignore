@@ -1,2 +1,4 @@
 .git/
 .dist/
+.gitignore
+tests/
